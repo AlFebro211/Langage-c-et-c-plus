@@ -1,0 +1,240 @@
+class Rectangle
+{
+private:
+    float longueur;
+    float largeur;
+
+public:
+    Rectangle();
+    Rectangle(float longueur, float largeur) : longueur(longueur), largeur(largeur){};
+
+    void setLargeur(float valeur) { largeur = valeur; };
+
+    void setLongueur(float valeur) { longueur = valeur; };
+
+    float getLargeur() { return largeur; };
+    float getLongueur() { return longueur; };
+    float getSurface() { return longueur * largeur; };
+    float getPerimetre() { return (longueur + largeur) * 2; };
+
+    void afficher();
+    void perimetre();
+    void surface();
+};
+=====================================================================================================
+#include <iostream>
+#include "functions.cpp"
+
+using namespace std;
+
+int main()
+{
+    int nb = saisirEntierSup(1);
+    Rectangle rectangles[nb];
+
+    saisirNbRectangles(rectangles, nb);
+    afficherDimensions(rectangles, nb);
+    afficherSurface(rectangles, nb);
+    afficherPerimetre(rectangles, nb);
+    rectangleGrandePerimetre(rectangles, nb);
+    rectanglePetiteSurface(rectangles, nb);
+    surfaces(rectangles, nb);
+}
+=======================================================================================================
+#include "rectangle.cpp"
+
+float saisirDimension();
+int saisirEntierSup(int x);
+float saisirLongueur(float largeur);
+float saisirLargeur(float longueur);
+Rectangle creerRectangle(int i);
+void saisirNbRectangles(Rectangle tableau[], int nb);
+void afficherDimensions(Rectangle tableau[], int nb);
+void afficherPerimetre(Rectangle tableau[], int nb);
+void afficherSurface(Rectangle tableau[], int nb);
+void rectanglePetiteSurface(Rectangle tableau[], int nb);
+void rectangleGrandePerimetre(Rectangle tableau[], int nb);
+void surfaces(Rectangle tableau[], int nb);
+=============================================================================
+#include "functions.h"
+#include <iostream>
+
+using namespace std;
+
+float saisirDimension()
+{
+    float dimension;
+
+    do
+    {
+        cout << "\nSaisir une dimension: ";
+        cin >> dimension;
+    } while (dimension < 0);
+
+    return dimension;
+}
+
+float saisirLongueur(float largeur)
+{
+    float longueur;
+
+    do
+    {
+        cout << "\nSaisir la longueur: ";
+        longueur = saisirDimension();
+    } while (longueur <= largeur);
+
+    return longueur;
+}
+
+float saisirLargeur(float longueur)
+{
+    float largeur;
+
+    do
+    {
+        cout << "\nSaisir la largeur: ";
+        largeur = saisirDimension();
+    } while (largeur >= longueur);
+
+    return largeur;
+}
+
+Rectangle creerRectangle(int i)
+{
+    Rectangle x = Rectangle();
+
+    cout << "\n\nrectangle numero " << i;
+
+    float longueur = saisirLongueur(0);
+    float largeur = saisirLargeur(longueur);
+
+    x.setLargeur(largeur);
+    x.setLongueur(longueur);
+
+    return x;
+}
+
+int saisirEntierSup(int x)
+{
+    int entier;
+
+    do
+    {
+        cout << "\nSaisir le nombre de rectangle: ";
+        cin >> entier;
+    } while (entier <= x);
+
+    return entier;
+}
+
+void saisirNbRectangles(Rectangle tableau[], int nb)
+{
+    for (int i = 0; i < nb; i++)
+    {
+        tableau[i] = creerRectangle(i + 1);
+    }
+}
+
+void afficherDimensions(Rectangle tableau[], int nb)
+{
+    cout << "\n";
+
+    for (int i = 0; i < nb; i++)
+    {
+        cout << "\nrectangle numero " << i;
+        tableau[i].afficher();
+    }
+}
+
+void afficherPerimetre(Rectangle tableau[], int nb)
+{
+    cout << "\n";
+
+    for (int i = 0; i < nb; i++)
+    {
+        cout << "\nrectangle numero " << i;
+        tableau[i].perimetre();
+    }
+}
+
+void afficherSurface(Rectangle tableau[], int nb)
+{
+    cout << "\n";
+
+    for (int i = 0; i < nb; i++)
+    {
+        cout << "\nrectangle numero " << i;
+        tableau[i].surface();
+    }
+}
+
+void rectanglePetiteSurface(Rectangle tableau[], int nb)
+{
+    float petiteSurface = tableau[0].getSurface();
+    int index = 0;
+
+    for (int i = 1; i < nb; i++)
+    {
+        if (petiteSurface <= tableau[i].getSurface())
+        {
+            petiteSurface = tableau[i].getSurface();
+            index = i;
+        }
+    }
+
+    cout << "\n\nLes dimensions du rectangle ayant la petite surface sont: ";
+    tableau[index].afficher();
+}
+
+void rectangleGrandePerimetre(Rectangle tableau[], int nb)
+{
+    float grandePerimetre = tableau[0].getSurface();
+    int index = 0;
+
+    for (int i = 1; i < nb; i++)
+    {
+        if (grandePerimetre >= tableau[i].getSurface())
+        {
+            grandePerimetre = tableau[i].getSurface();
+            index = i;
+        }
+    }
+
+    cout << "\n\nLes dimensions du rectangle ayant le grande perimetre sont: ";
+    tableau[index].afficher();
+}
+
+void surfaces(Rectangle tableau[], int nb)
+{
+    float surfaces = 0;
+
+    for (int i = 1; i < nb; i++)
+    {
+        surfaces = surfaces + tableau[i].getSurface();
+    }
+
+    cout << "\n\nLa surface total des rectangles est: " << surfaces << "\n\n";
+}
+=======================================================================
+#include <iostream>
+#include "rectangle.h"
+
+using namespace std;
+
+Rectangle::Rectangle() {}
+
+void Rectangle::afficher()
+{
+    cout << "\n     Longueur: " << longueur;
+    cout << "\n     Largeur: " << largeur;
+}
+void Rectangle::perimetre()
+{
+    cout << "\n     Perimetre: " << (longueur + largeur) * 2;
+}
+void Rectangle::surface()
+{
+    cout << "\n     Surface: " << longueur * largeur;
+}
+=============================================================================

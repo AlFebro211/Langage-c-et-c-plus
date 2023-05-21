@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+int SaisirEntier()
+{
+    int a;
+    printf(" taper un entier:",a);
+    scanf("%d",&a);
+    return a;
+}
+    int EstPair(int a)
+    {
+        if ((a%2)==0)
+    {
+       return a%2;
+    }
+
+        else
+        {
+            return 0;
+        }
+}
+     int main()
+
+    {
+        int u;
+        u=SaisirEntier();
+
+    if ((u%2==0))
+
+        {
+             printf("\n %d est pair:",u);
+        }
+
+    else
+        {
+             printf("\n %d est impair:",u);
+        }
+
+    return 0;
+
+          }

@@ -1,0 +1,23 @@
+#include <stdio.h>
+
+float SaisirReel()
+{
+    float v;
+    printf("taper un reel:",v);
+    scanf("%f",&v);
+    return v;
+}
+ float triple(float v)
+ {
+     float r=v*3;
+     return r;
+ }
+     int main()
+
+ {
+     float v,r;
+     v=SaisirReel();
+     r=triple (v);
+    printf("\n triple de %f=%f",v,r);
+    return 0;
+}
