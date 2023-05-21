@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1625210242 source:c:\users\ult\desktop\les projets\c++\exercice\fonctions.cpp
+	"fonctions.h"
+
+1625209313 c:\users\ult\desktop\les projets\c++\exercice\fonctions.h
+	<string>
+
+1625214243 source:c:\users\ult\desktop\les projets\c++\exercice\main.cpp
+	<iostream>
+	"Personne.h"
+
+1625214295 c:\users\ult\desktop\les projets\c++\exercice\personne.h
+	<string>
+
+1625214135 source:c:\users\ult\desktop\les projets\c++\exercice\personne.cpp
+	"Personne.h"
+

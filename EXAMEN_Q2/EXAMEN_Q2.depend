@@ -1,0 +1,9 @@
+# depslib dependency file v1.0
+1625302955 source:c:\users\ult\desktop\les projets\c++\examen_q2\main.cpp
+	<iostream>
+
+1627664780 source:c:\users\ult\desktop\les projets\c++\examen_q2\src\koko.cpp
+	"koko.h"
+
+1627664780 c:\users\ult\desktop\les projets\c++\examen_q2\include\koko.h
+
